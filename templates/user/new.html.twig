@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New User{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Create new User</h1>
+            {% include "user/_form.html.twig" %}
+        <a href="{{ path('user_index') }}">back to list</a>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            $("#user_profil").change(function(){
+                let text = $("#user_profil option:selected").text()
+                if(text === "Medecin"){
+                    $("#specialite_div").removeAttr("hidden")
+                }else {
+                    $("#specialite_div").attr("hidden", "hidden")
+                }
+            })
+        });
+    </script>
+{% endblock %}
